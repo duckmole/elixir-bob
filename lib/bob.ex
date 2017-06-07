@@ -3,6 +3,10 @@ defmodule Bob do
   Documentation for Bob.
   """
 
+  def version do
+    1
+  end
+
   def start do
     spawn fn -> loop() end
   end
@@ -10,9 +14,6 @@ defmodule Bob do
   def loop do
     receive do
       {pid, :quit} -> send pid, :bye
-      {pid, _} ->
-        send pid, "Ça va?"
-        loop()
     end
   end
 
